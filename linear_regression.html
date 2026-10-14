@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>Lineaarinen regressiomalli</title>
+<style>
+  body { font-family: Arial; max-width: 500px; margin: 40px auto; }
+  input, button { padding: 10px; font-size: 16px; margin-top: 5px; }
+  label { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h2>Lineaarinen regressiomalli</h2>
+<p>Syötä regressiomallin parametrit ja x-arvo. Malli laskee ennusteen kaavalla:</p>
+<p><strong>y = a + b · x</strong></p>
+
+<label>a (vakiotermi):</label><br>
+<input id="inputA" type="number" step="0.1"><br><br>
+
+<label>b (kulmakerroin):</label><br>
+<input id="inputB" type="number" step="0.1"><br><br>
+
+<label>x (syöte):</label><br>
+<input id="inputX" type="number" step="0.1"><br><br>
+
+<button onclick="predict()">Laske ennuste</button>
+
+<h3 id="result"></h3>
+
+<script>
+function predict() {
+    const a = parseFloat(document.getElementById("inputA").value);
+    const b = parseFloat(document.getElementById("inputB").value);
+    const x = parseFloat(document.getElementById("inputX").value);
+
+    if (isNaN(a) || isNaN(b) || isNaN(x)) {
+        document.getElementById("result").innerText = "Anna kelvolliset numerot kaikkiin kenttiin.";
+        return;
+    }
+
+    const y = a + b * x;
+    document.getElementById("result").innerText = "Ennuste y = " + y.toFixed(3);
+}
+</script>
+
+</body>
+</html>
